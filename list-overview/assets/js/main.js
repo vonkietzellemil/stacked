@@ -8,6 +8,9 @@ function isInStandaloneMode() {
     window.navigator.standalone;
 }
 
+const installAppGuide = document.getElementById("installAppGuide")
+const installAppGuideIos = document.getElementById("installAppGuideIos");
+
 if ('BeforeInstallPromptEvent' in window) {
   // Chrome/Android custom install button
   let installPrompt = null;
@@ -16,8 +19,6 @@ if ('BeforeInstallPromptEvent' in window) {
     e.preventDefault();
     installPrompt = e;
 
-
-    const installAppGuide = document.getElementById("installAppGuide");
     setTimeout(() => {
       installAppGuide.hidden = false;
     }, 1000)
@@ -41,6 +42,7 @@ if ('BeforeInstallPromptEvent' in window) {
 
   function disableInAppInstallPrompt() {
     installPrompt = null;
+    installAppGuide.hidden = true;
   }
 
   window.addEventListener("beforeinstallprompt", async (e) => {
@@ -63,8 +65,7 @@ if ('BeforeInstallPromptEvent' in window) {
 } else if (isIOS() && !isInStandaloneMode()) {
   // Show "Tap Share → Add to Home Screen"
 
-  const installAppGuide = document.getElementById("installAppGuideIos");
-  setTimeout(() => installAppGuide.hidden = false, 1000)
+  setTimeout(() => installAppGuideIos.hidden = false, 1000)
 }
 
 
