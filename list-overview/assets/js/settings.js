@@ -1,5 +1,5 @@
 const settingsData = {
-  CURRENT_VERSION: "1.5.1",
+  CURRENT_VERSION: "1.6.0",
   CURRENT_DATA_VERSION: 4,
 };
 
@@ -598,6 +598,7 @@ function checkForUpdates() {
   runDataMigrations();
 
   if (settings.version !== settingsData.CURRENT_VERSION) {
+    console.log("runningnngnn")
     settings.version = settingsData.CURRENT_VERSION;
     if (!settings.receiveUpdateNews) return;
 
