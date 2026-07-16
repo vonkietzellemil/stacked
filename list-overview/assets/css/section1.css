@@ -1,0 +1,175 @@
+.view-actions-bar {
+  display: flex;
+  height: 32px;
+  border-bottom: 1px solid var(--color-border);
+  justify-content: space-between;
+  padding: 0 8px;
+}
+.view-actions-bar .item-container {
+  display: flex;
+}
+.view-actions-bar .item {
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+.view-actions-bar .item svg {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.1s ease;
+}
+.view-actions-bar .item:active svg {
+  transform: scale(0.8);
+}
+
+.view-actions-bar .item.deleted svg {
+  fill: none;
+  stroke-width: 60px;;
+}
+
+.view-actions-bar .item.filter:active svg {
+  transform: scale(0.8) translate(-50%, -50%);
+}
+
+.view-actions-bar .item.filter {
+  position: relative;
+}
+.view-actions-bar .item.filter.active::after {
+  content: "";
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-danger, red);
+  border-radius: 50%;
+
+  right: 2px;
+  bottom: 2px;
+}
+
+.view-actions-bar .item.refresh.animate {
+  animation: rotate360 0.5s ease;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.overview-top {
+  padding: 4px 0;
+}
+.overview-title {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-highlight);
+}
+.overview-title h2 {
+  min-width: 0;
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.list-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-title {
+  display: flex;
+  align-items: center;
+  padding-top: 4px;
+  border-bottom: 1px solid var(--color-highlight);
+}
+
+.back-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-btn {
+  background-color: var(--main-bg);
+  width: 50px;
+  height: 50px;
+  border-radius: 0px;
+  border: none;
+  cursor: pointer;
+}
+
+.back-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.current-list-title-container {
+  min-width: 0;     /* WICHTIG in Flex */
+  flex: 1 1 auto;
+}
+
+.current-list-title-container h2 {
+  margin: 0;
+  overflow: hidden;
+
+  font-size: 24px;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+
+  word-break: break-word;   /* falls lange Wörter/URLs */
+}
+
+.header-btn {
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+.header-btn svg {
+  width: 100%;
+  height: 100%;
+}
+
+#view-list {
+  background-color: var(--main-bg);
+
+  flex: 1;
+  min-height: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+
+#overviewSection {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+#view-overview {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}

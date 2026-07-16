@@ -1,0 +1,554 @@
+/* General Modals */
+.modal-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 16px 0 12px 0;
+  background: var(--color-text);
+  background-size: 300%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: gradientMove 4s ease-in-out infinite;
+}
+
+.modal-save-btn {
+  padding: 12px 8px;
+  color: var(--color-text-muted);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  margin-bottom: 12px;
+  font-size: 18px;
+
+  transition: 0.05s ease-in-out;
+}
+
+.modal-save-btn:active {
+  transform: scale(0.95);
+  color: var(--color-text);
+  background-color: var(--color-border);
+  border: 1px solid transparent;
+}
+
+#modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+
+  margin-bottom: 20px;
+}
+
+#editRowModal.hidden, #editListModal.hidden {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+#editRowModal, #editListModal {
+  visibility: visible;
+  pointer-events: all;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  background-color: rgba(0, 0, 0, 0.712);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-title-input {
+  flex: 1 1 0;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 20px;
+  border: none;
+  border-radius: none;
+  border-bottom: 1px solid var(--color-accent);
+  background-color: var(--main-bg);
+  color: var(--main-color);
+
+  margin-bottom: 14px;
+}
+
+.edit-title-input::placeholder {
+  color: gray;
+
+  color: var(--main-color);
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.edit-title-input:focus {
+  outline: 0;
+}
+
+.edit-title-input:focus::placeholder {
+  opacity: 0.3;
+  transform: translateX(4px);
+}
+
+.edit-content-input {
+  width: 100%;
+  min-height: 180px;
+  height: auto;
+  box-sizing: border-box;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* IE / Edge alt */
+  -ms-overflow-style: none;
+
+  resize: vertical;          /* User kann Höhe anpassen */
+  white-space: pre-wrap;     /* 🔥 Zeilen umbrechen */
+  word-break: break-word;
+
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.edit-content-input:focus {
+  outline: 0;
+}
+
+/* Chrome, Edge, Safari */
+.edit-content-input::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+
+.modal {
+  visibility: visible;
+  pointer-events: all;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  background-color: var(--color-modal-bg);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-card {
+  position: relative;
+  background-color: var(--color-bg);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 90%;
+  max-width: 700px;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-modal-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.settings-page-content.list-settings {
+  border: none;
+}
+
+.form-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  overflow: hidden;
+  outline: none;
+}
+
+.label-for-list-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-options-container {
+  max-width: 100%;
+}
+
+.list-option-label {
+  border-radius: 50px;
+  border: 1px solid var(--color-highlight);
+  background-color: transparent;
+  padding: 10px 14px;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out
+    box-shadow 0.15s ease-in-out
+  ;
+}
+
+.list-option-label:has(input:checked) {
+  outline: 2px solid var(--color-accent);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  box-shadow: var(--color-glow);
+}
+
+.list-option-label input {
+  display: none;
+}
+
+
+/* Settings Modal */
+
+.settings-modal-container {
+  visibility: visible;
+  pointer-events: all;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+
+  background-color: var(--color-modal-bg);
+  transition: background-color 0.4s ease, backdrop-filter 0.15s ease;
+}
+
+.settings-modal.hidden {
+  pointer-events: none;
+  bottom: -100%;
+}
+
+.settings-modal {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  height: 90%;
+  border-radius: 20px;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: bottom 0.4s ease;
+}
+
+.settings-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings-header-container h1 {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  cursor: grab;
+}
+.settings-header-container h1.settings-root-page-title {
+  justify-content: start;
+}
+
+.settings-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  border-top: 1px solid var(--color-highlight);
+  padding: 24px 0;
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border-radius: 20px;
+  overflow: hidden;
+  
+  background-color: var(--color-border);
+
+  min-height: 0;
+}
+
+.settings-item {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.settings-item:active {
+  background-color: transparent;
+}
+
+.settings-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px 4px;
+}
+
+.settings-option {
+  display: flex;
+  align-items: center;
+}
+
+.settings-item.settings-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.settings-item.settings-info .info {
+  font-size: 12px;
+  color: var(--color-text-muted);
+
+  margin-top: 4px;
+}
+
+/* ===== drag handle ===== */
+
+#settingsDragHandle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  cursor: grab;
+}
+
+#settingsDragHandle:active,
+.settings-header-container h1:active {
+  cursor: grabbing;
+}
+
+#settingsDragHandle span {
+  width: 70px;
+  height: 6px;
+  background: rgba(128,128,128,0.6);
+  border-radius: 10px;
+  display: block;
+  padding: 0;
+}
+
+/* pages */
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 12px;
+}
+
+.settings-page.hidden {
+  display: none;
+}
+
+.settings-back-btn {
+  background: transparent;
+  border: none;
+  color: rgb(48, 158, 255);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.settings-done-btn {
+  background: transparent;
+  border: none;
+  color: rgb(48, 158, 255);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* ===== premium backdrop ===== */
+
+.settings-modal-container.hidden {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  pointer-events: none;
+  background-color: transparent;
+}
+
+.settings-modal-container:not(.hidden) {
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+/* smooth sheet */
+
+.settings-modal {
+  transform: translateY(100%);
+  transition:
+    transform 0.32s cubic-bezier(.2,.8,.2,1),
+    bottom 0.32s ease;
+}
+
+.settings-modal.open {
+  transform: translateY(0);
+}
+
+/* drag handle nicer */
+
+.settings-drag-handle span {
+  width: 64px;
+  height: 6px;
+  background: rgba(120,120,120,0.7);
+  border-radius: 999px;
+}
+
+
+.settings-section.theme-color-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(136px, 1fr));
+  background-color: var(--color-surface);
+  gap: 12px;
+  padding: 12px;
+}
+.settings-section.theme-options label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: var(--color-surface);
+  cursor: pointer;
+}
+.settings-section.theme-options label:has(input:checked) {
+  background-color: transparent;
+}
+.settings-section.theme-color-options label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 20px;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  cursor: pointer;
+}
+.settings-section.theme-color-options label .theme-color-preview {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.settings-section.theme-color-options label .theme-color-preview-inner {
+  background-color: transparent;
+  border: none;
+
+  width: 80%;
+  height: 80%;
+
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.settings-section.theme-color-options label .theme-color-preview-dot {
+  width: 80%;
+  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-border);
+
+  padding: 0;
+}
+.settings-section.theme-color-options label p:nth-child(2) {
+  color: var(--color-text-muted);
+}
+.settings-section.theme-color-options label:has(input:checked) {
+  border: 4px solid var(--color-border);
+}
+.settings-section.theme-options input,
+.settings-section.theme-color-options input {
+  display: none;
+}
+
+/* ========================================
+   INFO PAGE
+======================================== */
+
+#settingsPageInfo .current-version {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 12px;
+}
+
+/* ========================================
+   STATS PAGE
+======================================== */
+

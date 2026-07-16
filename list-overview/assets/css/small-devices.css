@@ -1,0 +1,60 @@
+@media (pointer: coarse) {
+  .row {
+    touch-action: pan-y;
+    user-select: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .row.swiping {
+    transition: none;
+  }
+
+  .row.delete-ready {
+    background: var(--color-danger);
+  }
+
+  .delete-icon-container {
+    display: none;
+    visibility: none;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .close-popup-btn, .close-btn {
+    width: 24px;
+    height: 24px;
+  }
+
+  .counter-plus-btn,
+  .counter-minus-btn {
+    margin: 0;
+  }
+
+  .row.active .edit-icon-container {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .row.active .edit-icon {
+    width: 80%;
+    height: 80%;
+  }
+
+  .list-title {
+    gap: 16px;
+  }
+
+  .current-list-title-container h2 {
+    -webkit-line-clamp: 4;
+    font-size: 20px;
+  }
+
+  .drag-handle {
+    display: flex;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+}

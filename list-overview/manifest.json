@@ -1,0 +1,30 @@
+{
+  "name": "Stacked",
+  "short_name": "Stacked",
+  "start_url": "./",
+  "shortcuts": [
+
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "files": [
+        {
+          "name": "file",
+          "accept": ["application/json", ".json"]
+        }
+      ]
+    }
+  },
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000",
+  "theme_color": "#000",
+  "icons": [
+    { "src": "assets/img/stacked-logo.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/img/stacked-logo.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
