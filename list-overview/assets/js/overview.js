@@ -2187,7 +2187,7 @@ async function shareSelectedIds(ids) {
     const itemsInThisCat = StorageAPI.getItemsByParentId(cat.id);
     if (itemsInThisCat.length === 0) return;
 
-    text += `*${cat.name}*\n`;
+    text += `\n*${cat.name}*\n`;
 
     itemsInThisCat.forEach(item => {
       if (item.type === "row") {
@@ -2228,7 +2228,7 @@ function exportSelectedIds(selectedItems) {
   function addItem(id, hasSharedParent=false) {
     const item = StorageAPI.getItemById(id);
     
-    const parentIsCustomView = !Object.values(VIEWS).some(
+    const parentIsCustomView = Object.values(VIEWS).some(
       config => item.parentId !== config.parent.view
     );
     
