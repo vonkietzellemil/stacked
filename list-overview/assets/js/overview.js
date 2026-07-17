@@ -2178,9 +2178,9 @@ async function shareSelectedIds(ids) {
         .join("\n");
 
       text += `${formattedContent}\n\n`;
+    } else {
+      text += "\n";
     }
-
-    text += "\n";
   }
 
   function addCategoryToText(cat) {
@@ -2229,11 +2229,13 @@ function exportSelectedIds(selectedItems) {
     const item = StorageAPI.getItemById(id);
     
     const parentIsCustomView = !Object.values(VIEWS).some(
-      config => item.parentId === config.parent.view
+      config => item.parentId !== config.parent.view
     );
     
-    if (!parentIsCustomView && !hasSharedParent) {
+    if (parentIsCustomView && !hasSharedParent && item.type === "row") {
       item.parentId = null;
+    } else if (parentIsCustomView && !hasSharedParent && item.type === "list") {
+      item.parentId = "root";
     }
 
     switch(item.type) {
