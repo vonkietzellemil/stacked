@@ -382,7 +382,7 @@ const SELECTED_ACTIONS = {
   share: {
     icon: icons.general.share,
     text: "Share",
-    onClick: () => alert("This action doesnt work at the moment."),
+    onClick: () => shareSelectedIds(SelectionManager.ids),
   },
 
   export: {
@@ -752,7 +752,6 @@ const VIEWS = {
     selectedMenuContainer: document.getElementById("view-list"),
     selectedActions: {
       more: [
-        SELECTED_ACTIONS.share,
         SELECTED_ACTIONS.export,
       ],
       default: [
@@ -766,6 +765,7 @@ const VIEWS = {
     // UI Elements
     enableViewHeader() {
       enableViewHeader({
+        backBtnFunc: () => { location.hash = `#/${parseRoute()[0]}`; },
         title: () => {
           return StorageAPI.getListById(AppRoute.currentView.id)?.name;
         },
@@ -793,7 +793,7 @@ function renderListsPage() {
 
   renderCollection({
     container: entityContainer,
-    items: StorageAPI.getItemsByParentId(config.parent.view),
+    items: StorageAPI.getItemsByParentId(config.parent.id || config.parent.view),
     config,
   });
 }
@@ -2148,31 +2148,62 @@ function searchItems(items, query) {
 async function shareSelectedIds(ids) {
   let text = "";
   
-  Object.values(ids).forEach(id => {
+  const lists = StorageAPI.getLists().filter(list => ids.has(list.id));
+
+  lists.forEach(list => {
     // 🔹 Listen-Titel
-    text += `\n📋 *${id.name}*\n────────────────\n`;
+    text += `\n📋 *${list.name}*\n────────────────\n`;
 
-    // 🔹 Rows der Liste holen
-    const rows = StorageAPI.getRowsByListId(list.id);
+    const itemsInThisList = StorageAPI.getItemsByParentId(list.id)
+      .filter(item => item.type === "row" || item.type === "category");
 
-    rows.forEach(row => {
-      text += `• *${row.title}${row.count ? ` (${row.count})` : ""}${row.content ? ":" : ""}*\n`;
-
-      if (row.content) {
-         const formattedContent = row.content
-          .split("\n")
-          .map(line => line.trim() ? `> _${line.trim()}_` : "\n")
-          .join("\n");
-
-        text += `${formattedContent}`;
+    itemsInThisList.forEach(item => {
+      if (item.type === "row") {
+        addRowToText(item);
+      } else if (item.type === "category") {
+        addCategoryToText(item);
       }
-
-      text += "\n"
     });
 
     text += "\n\n";
   });
 
+  function addRowToText(row) {
+    text += `• ${row.name}${row.count ? ` (${row.count})` : ""}${row.content ? ":" : ""}\n`;
+
+    if (row.content) {
+        const formattedContent = row.content
+        .split("\n")
+        .map(line => line.trim() ? `> _${line.trim()}_` : "")
+        .join("\n");
+
+      text += `${formattedContent}\n\n`;
+    }
+
+    text += "\n";
+  }
+
+  function addCategoryToText(cat) {
+    const itemsInThisCat = StorageAPI.getItemsByParentId(cat.id);
+    if (itemsInThisCat.length === 0) return;
+
+    text += `*${cat.name}*\n`;
+
+    itemsInThisCat.forEach(item => {
+      if (item.type === "row") {
+        addRowToText(item);
+      } else if (item.type === "category") {
+        addCategoryToText(item);
+      }
+    });
+
+    text += "\n\n";
+  }
+
+
+  console.log(text);
+
+  
   // 🔥 Share
   if (navigator.share) {
     try {

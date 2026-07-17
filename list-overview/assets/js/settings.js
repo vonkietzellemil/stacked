@@ -1,5 +1,5 @@
 const settingsData = {
-  CURRENT_VERSION: "1.6.0",
+  CURRENT_VERSION: "1.6.1",
   CURRENT_DATA_VERSION: 4,
 };
 
