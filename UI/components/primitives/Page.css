@@ -1,0 +1,14 @@
+.page {
+
+  padding-bottom:
+  env(safe-area-inset-bottom);
+
+}
+
+
+.has-bottom-nav {
+
+  padding-bottom:
+  80px;
+
+}

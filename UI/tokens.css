@@ -1,0 +1,321 @@
+/* =================================   
+Fonts
+================================= */
+
+:root {
+
+  /* Font families */
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Inter", sans-serif;
+
+
+  /* Font weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+
+  /* Font sizes */
+  --text-xs: 12px;    /* 12px */
+  --text-sm: 14px;   /* 14px */
+  --text-md: 16px;       /* 16px */
+  --text-lg: 18px;   /* 18px */
+  --text-xl: 20px;    /* 20px */
+  --text-2xl: 24px;    /* 24px */
+  --text-3xl: 30px;  /* 30px */
+  --text-4xl: 36px;   /* 36px */
+  --text-5xl: 48px;      /* 48px */
+
+
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.75;
+
+
+  /* Letter spacing */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+
+}
+
+@import url('https://fonts.googleapis.com/css?family=Inter:700|Inter:400');
+
+body {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: var(--text-md);
+  color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+html {font-size: var(--text-md);} /* 16px */
+
+h1 {font-size: var(--text-4xl); /* 36px */}
+
+h2 {font-size: var(--text-3xl); /* 30px */}
+
+h3 {font-size: var(--text-2xl); /* 24px */}
+
+h4 {font-size: var(--text-xl); /* 20px */}
+
+small {font-size: var(--text-lg); /* 18px */}
+caption {font-size: var(--text-xs); /* 12px */}
+
+
+/* =================================   
+Spacing
+================================= */
+
+:root {
+  --space-0: 0;
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem;  /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem;    /* 16px */
+  --space-5: 1.5rem;  /* 24px */
+  --space-6: 2rem;    /* 32px */
+  --space-7: 3rem;    /* 48px */
+  --space-8: 4rem;    /* 64px */
+}
+
+
+/* =================================   
+Radius
+================================= */
+
+:root {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 9999px;
+}
+
+
+/* =================================   
+Shadow
+================================= */
+
+:root {
+  --shadow-sm:
+    0 1px 2px rgba(0,0,0,.1);
+
+  --shadow-md:
+    0 4px 8px rgba(0,0,0,.12);
+
+  --shadow-lg:
+    0 8px 24px rgba(0,0,0,.16);
+}
+
+
+/* =================================   
+Border
+================================= */
+
+:root {
+  --border-color: var(--background-300);
+
+  --border-width: 1px;
+
+  --border-default:
+    var(--border-width) solid var(--border-color);
+}
+
+
+/* =================================   
+Z-index
+================================= */
+
+:root {
+  --z-sidebar: -100;
+  --z-dropdown: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+  --z-tooltip: 400;
+}
+
+/* =================================   
+Animation
+================================= */
+
+:root {
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  --ease-default: ease;
+}
+
+/* =================================   
+Semantic
+================================= */
+
+:root {
+  --color-text: var(--text-950);
+
+  --color-text-muted: var(--text-700);
+
+  --color-background: var(--background-50);
+
+  --color-surface: var(--background-100);
+
+  --color-surface-elevated: var(--background-200);
+
+  --color-border: var(--background-300);
+
+  --color-primary: var(--primary-500);
+
+  --color-success: #16a34a;
+
+  --color-danger: #dc2626;
+}
+
+/* =================================   
+Colors
+================================= */
+
+:root {
+  --text-50: #f0e7fe;
+  --text-100: #e1cefd;
+  --text-200: #c39efa;
+  --text-300: #a56df8;
+  --text-400: #863cf6;
+  --text-500: #680bf4;
+  --text-600: #5309c3;
+  --text-700: #3f0792;
+  --text-800: #2a0561;
+  --text-900: #150231;
+  --text-950: #0a0118;
+
+  --background-50: #f2f2f2;
+  --background-100: #e6e6e6;
+  --background-200: #cccccc;
+  --background-300: #b3b3b3;
+  --background-400: #999999;
+  --background-500: #808080;
+  --background-600: #666666;
+  --background-700: #4d4d4d;
+  --background-800: #333333;
+  --background-900: #1a1a1a;
+  --background-950: #0d0d0d;
+
+  --primary-50: #edecf8;
+  --primary-100: #dbdaf1;
+  --primary-200: #b6b5e3;
+  --primary-300: #928fd6;
+  --primary-400: #6d6ac8;
+  --primary-500: #4945ba;
+  --primary-600: #3a3795;
+  --primary-700: #2c2970;
+  --primary-800: #1d1c4a;
+  --primary-900: #0f0e25;
+  --primary-950: #070713;
+
+  --secondary-50: #e7e5ff;
+  --secondary-100: #cfccff;
+  --secondary-200: #9e99ff;
+  --secondary-300: #6e66ff;
+  --secondary-400: #3d33ff;
+  --secondary-500: #0d00ff;
+  --secondary-600: #0a00cc;
+  --secondary-700: #080099;
+  --secondary-800: #050066;
+  --secondary-900: #030033;
+  --secondary-950: #01001a;
+
+  --accent-50: #fce5ff;
+  --accent-100: #f9ccff;
+  --accent-200: #f399ff;
+  --accent-300: #ed66ff;
+  --accent-400: #e733ff;
+  --accent-500: #e100ff;
+  --accent-600: #b400cc;
+  --accent-700: #870099;
+  --accent-800: #5a0066;
+  --accent-900: #2d0033;
+  --accent-950: #17001a;
+
+  --border: gray;
+
+  --linearPrimarySecondary: linear-gradient(#8e8cd4, #dddbff);
+  --linearPrimaryAccent: linear-gradient(#8e8cd4, #f28fff);
+  --linearSecondaryAccent: linear-gradient(#dddbff, #f28fff);
+  --radialPrimarySecondary: radial-gradient(#8e8cd4, #dddbff);
+  --radialPrimaryAccent: radial-gradient(#8e8cd4, #f28fff);
+  --radialSecondaryAccent: radial-gradient(#dddbff, #f28fff);
+
+  --success: green;
+
+}
+:root[data-theme*="dark"] {
+  --text-50: #0a0118;
+  --text-100: #150231;
+  --text-200: #2a0561;
+  --text-300: #3f0792;
+  --text-400: #5309c3;
+  --text-500: #680bf4;
+  --text-600: #863cf6;
+  --text-700: #a56df8;
+  --text-800: #c39efa;
+  --text-900: #e1cefd;
+  --text-950: #f0e7fe;
+
+  --background-50: #0d0d0d;
+  --background-100: #141414;
+  --background-200: #222222;
+  --background-300: #414141;
+  --background-400: #666666;
+  --background-500: #808080;
+  --background-600: #999999;
+  --background-700: #b3b3b3;
+  --background-800: #cccccc;
+  --background-900: #e6e6e6;
+  --background-950: #f2f2f2;
+
+  --primary-50: #070713;
+  --primary-100: #0f0e25;
+  --primary-200: #1d1c4a;
+  --primary-300: #2c2970;
+  --primary-400: #3a3795;
+  --primary-500: #4945ba;
+  --primary-600: #6d6ac8;
+  --primary-700: #928fd6;
+  --primary-800: #b6b5e3;
+  --primary-900: #dbdaf1;
+  --primary-950: #edecf8;
+
+  --secondary-50: #01001a;
+  --secondary-100: #030033;
+  --secondary-200: #050066;
+  --secondary-300: #080099;
+  --secondary-400: #0a00cc;
+  --secondary-500: #0d00ff;
+  --secondary-600: #3d33ff;
+  --secondary-700: #6e66ff;
+  --secondary-800: #9e99ff;
+  --secondary-900: #cfccff;
+  --secondary-950: #e7e5ff;
+
+  --accent-50: #17001a;
+  --accent-100: #2d0033;
+  --accent-200: #5a0066;
+  --accent-300: #870099;
+  --accent-400: #b400cc;
+  --accent-500: #e100ff;
+  --accent-600: #e733ff;
+  --accent-700: #ed66ff;
+  --accent-800: #f399ff;
+  --accent-900: #f9ccff;
+  --accent-950: #fce5ff;
+
+
+  --success: rgb(174, 243, 174);
+  --danger: rgb(252, 165, 165);
+}

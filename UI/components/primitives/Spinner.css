@@ -1,0 +1,30 @@
+.spinner {
+
+  width:32px;
+  height:32px;
+
+
+  border:
+  4px solid var(--background-300);
+
+
+  border-top-color:
+  var(--color-primary);
+
+
+  border-radius: var(--radius-pill);
+
+
+  animation:
+  spin .8s linear infinite;
+
+}
+
+
+@keyframes spin {
+
+  to {
+  transform:rotate(360deg);
+  }
+
+}

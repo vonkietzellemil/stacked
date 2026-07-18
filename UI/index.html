@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="components/primitives/App.css">
+  <link rel="stylesheet" href="components/primitives/Alert.css">
+  <link rel="stylesheet" href="components/primitives/Avatar.css">
+  <link rel="stylesheet" href="components/primitives/Badge.css">
+  <link rel="stylesheet" href="components/primitives/Button.css">
+  <link rel="stylesheet" href="components/primitives/BottomSheet.css">
+  <link rel="stylesheet" href="components/primitives/Card.css">
+  <link rel="stylesheet" href="components/primitives/Checkbox.css">
+  <link rel="stylesheet" href="components/primitives/Divider.css">
+  <link rel="stylesheet" href="components/primitives/EmptyState.css">
+  <link rel="stylesheet" href="components/primitives/Input.css">
+  <link rel="stylesheet" href="components/primitives/Modal.css">
+  <link rel="stylesheet" href="components/primitives/Page.css">
+  <link rel="stylesheet" href="components/primitives/Select.css">
+  <link rel="stylesheet" href="components/primitives/Spinner.css">
+  <link rel="stylesheet" href="components/primitives/Stack.css">
+  <link rel="stylesheet" href="components/primitives/Surface.css">
+  <link rel="stylesheet" href="components/primitives/Switch.css">
+  <link rel="stylesheet" href="components/primitives/Tabs.css">
+  <link rel="stylesheet" href="components/primitives/Textarea.css">
+  <link rel="stylesheet" href="components/primitives/Toast.css">
+  <link rel="stylesheet" href="components/primitives/Tooltip.css">
+  <link rel="stylesheet" href="components/primitives/entity.css">
+
+  <title>UI Components</title>
+</head>
+<body>
+  <div id="App">
+
+    <div id="sidebar" class="sidebar">
+      Sidebar
+    </div>
+
+
+    <div id="pagesContainer">
+      <div id="mainTestPage" class="page">
+        <h1 class="page-header">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm280-80h280v-560H480v560Z"/></svg>
+          Main Test Page
+        </h1>
+
+
+      </div>
+
+
+
+      <div id="componentsPage" class="page">
+        <h1 class="page-header">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm280-80h280v-560H480v560Z"/></svg>
+          Stacked Components
+        </h1>
+
+
+        <button class="button icon-button button--floating">Save</button>
+
+        <div id="grid">
+          <div>
+            <h2 class="header">Card</h2>
+            <div class="card">
+
+              <header class="card__header">
+                <h3>Account</h3>
+              </header>
+
+              <div class="card__body">
+                Your information
+              </div>
+
+              <footer class="card__footer">
+                <button class="button button--primary">Save</button>
+              </footer>
+
+            </div>
+          </div>
+          
+
+
+          <div>
+            <h2 class="header">Searchbar</h2>
+            <input
+              class="input searchbar"
+              placeholder="Search"
+            />
+          </div>
+
+
+
+
+          <div>
+            <h2 class="header">Surface</h2>
+            <div
+              class="surface surface--raised"
+              style="
+                height: 100px;
+                width: 300px;
+                display: flex;
+                justify-content: center;
+                align-items: center;"
+            ></div>
+          </div>
+
+          
+
+          <div>
+            <h2 class="header">Stack with buttons</h2>
+            <div class="stack">
+              <button class="button button--primary">Button in Stack</button>
+              <button class="button button--secondary" onclick="const root = document.documentElement; root.dataset.theme === 'dark' ? root.dataset.theme = '' : root.dataset.theme = 'dark'";>Light / Dark mode</button>
+              <button class="button button--danger" onclick="document.getElementById('modal').style.display = 'flex'";>Delete Account</button>
+            </div>
+          </div>
+          
+
+          <div>
+            <h2 class="header">Badge</h2>
+            <span class="badge badge--success">
+              Active
+            </span>
+          </div>
+          
+
+
+          <div>
+            <h2 class="header">Field</h2>
+            <div class="field">
+
+              <label>
+                Email
+              </label>
+
+              <input
+                class="input"
+                placeholder="name@example.com"
+              />
+
+              <p class="field__hint">
+                We'll never share your email.
+              </p>
+
+            </div>
+          </div>
+          
+
+
+          <div>
+            <h2 class="header">Textarea</h2>
+            <textarea class="textarea" placeholder="Write something..."></textarea>
+          </div>
+          
+
+
+          <div>
+            <h2 class="header">Select</h2>
+            <select class="select">
+
+              <option>
+                Germany
+              </option>
+
+              <option>
+                France
+              </option>
+
+            </select>
+          </div>
+          
+
+
+          <div>
+            <h2 class="header">Checkbox</h2>
+            <label class="checkbox">
+
+              <input type="checkbox">
+
+              <span>
+                Accept terms
+              </span>
+
+            </label>
+          </div>
+
+          
+
+
+          <div>
+            <h2 class="header">Switch</h2>
+            <label class="switch">
+
+              <input type="checkbox">
+
+              <span></span>
+
+            </label>
+          </div>
+          
+
+
+          <div>
+            <h2 class="header">Tabs</h2>
+            <div class="tabs">
+
+              <button class="tabs__item active">
+                Profile
+              </button>
+
+              <button class="tabs__item">
+                Settings
+              </button>
+
+            </div>
+          </div>
+          
+
+          
+
+          <div>
+            <h2 class="header">Avatar</h2>
+            <div class="avatar">
+              JD
+            </div>
+          </div>
+
+
+
+
+          <div>
+            <h2 class="header">Empty</h2>
+            <div class="empty">
+
+              <h3>
+                No messages
+              </h3>
+
+              <p>
+                Your inbox is empty.
+              </p>
+
+              <button class="button button--primary" onclick="document.getElementById('sheet').style.display = 'flex';">
+                Create message
+              </button>
+
+            </div>
+          </div>
+          
+
+
+          <div>
+            <h2 class="header">Spinner</h2>
+            <div class="spinner"></div>
+          </div>
+          
+
+
+          <div>
+            <h2 class="header">Toast</h2>
+            <div class="toast toast--success">
+
+              <div class="toast__icon">
+                ✓
+              </div>
+
+
+              <div>
+
+              <strong>
+                Saved
+              </strong>
+
+              <p>
+                Your changes were saved.
+              </p>
+
+              </div>
+
+
+              <button class="icon-button">
+                ✕
+              </button>
+
+
+            </div>
+          </div>
+          
+
+          <div>
+            <h2 class="header">Alert</h2>
+            <div class="alert alert--danger">
+
+              <strong>
+                Warning
+              </strong>
+
+              <p>
+                Something went wrong.
+              </p>
+
+            </div>
+          </div>
+
+
+        </div>
+        
+
+
+
+
+
+      </div>
+    </div>
+    
+
+
+
+
+
+
+
+    <div id="modal" class="modal" style="display: none;">
+
+      <div class="modal__backdrop"></div>
+
+      <div class="modal__content">
+
+        <header class="modal__header">
+          <h3>Delete account?</h3>
+
+          <button class="icon-button">
+            ✕
+          </button>
+        </header>
+
+
+        <div class="modal__body">
+          This action cannot be undone.
+        </div>
+
+
+        <footer class="modal__footer">
+
+          <button class="button button--secondary" onclick="document.getElementById('modal').style.display = 'none'">
+            Cancel
+          </button>
+
+          <button class="button button--danger">
+            Delete
+          </button>
+
+        </footer>
+
+      </div>
+
+    </div>
+
+
+
+
+
+    <div id="sheet" class="sheet" style="display: none;">
+
+      <div class="sheet__backdrop"></div>
+
+
+      <div class="sheet__content">
+
+        <div class="sheet__handle"></div>
+
+          <h2>
+            Title
+          </h2>
+
+          <p>
+            Content...
+          </p>
+
+          <button class="button button--secondary" onclick="document.getElementById('sheet').style.display = 'none'">Cancel</button>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+  <script src="app.js"></script>
+</body>
+</html>

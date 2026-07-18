@@ -1,0 +1,103 @@
+.field {
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:
+  var(--space-2);
+
+}
+
+
+
+.field label {
+
+  font-weight:600;
+
+}
+
+
+
+.input {
+
+  height:42px;
+
+  padding:
+  0 var(--space-3);
+
+
+  border:
+  var(--border-default);
+
+
+  border-radius:
+  var(--radius-md);
+
+
+  background:
+  var(--color-surface);
+
+
+  color:
+  var(--color-text);
+
+
+  font-family:inherit;
+
+
+}
+
+
+
+.input:focus {
+
+  outline:
+
+  2px solid var(--color-primary);
+
+  outline-offset:2px;
+
+}
+
+
+
+.field__hint {
+
+  font-size:.85rem;
+
+  color:
+  var(--color-text-muted);
+
+}
+
+
+
+.searchbar {
+
+  height: 42px;
+
+  padding:
+  0 var(--space-3);
+
+
+  border:
+  var(--border-default);
+
+
+  border-radius:
+  var(--radius-pill);
+
+
+  background:
+  var(--color-surface);
+
+
+  color:
+  var(--color-text);
+
+
+  font-family: inherit;
+
+
+}

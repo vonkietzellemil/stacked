@@ -1,0 +1,26 @@
+.textarea {
+
+  padding:
+  var(--space-3);
+
+
+  min-height:
+  120px;
+
+
+  resize:vertical;
+
+
+  border:
+  var(--border-default);
+
+
+  border-radius:
+  var(--radius-md);
+
+  background-color: var(--color-surface);
+  color: var(--color-text);
+
+  font-family:inherit;
+
+}

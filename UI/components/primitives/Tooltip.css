@@ -1,0 +1,42 @@
+.tooltip {
+
+  position:relative;
+
+}
+
+
+
+.tooltip:hover::after {
+
+  content:
+  attr(data-tooltip);
+
+
+  position:absolute;
+
+  bottom:120%;
+  left:50%;
+
+
+  transform:
+  translateX(-50%);
+
+
+  background:
+  var(--background-900);
+
+
+  color:white;
+
+
+  padding:
+  6px 10px;
+
+
+  border-radius:
+  var(--radius-sm);
+
+
+  font-size:.8rem;
+
+}

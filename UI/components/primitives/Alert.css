@@ -1,0 +1,29 @@
+.alert {
+
+  padding:
+  var(--space-4);
+
+
+  border-radius:
+  var(--radius-md);
+
+
+  border:
+  var(--border-default);
+
+}
+
+
+.alert--danger {
+
+  background:
+  #fee2e2;
+
+  border-color:
+  #f87171;
+
+}
+
+:root[data-theme*="dark"] .alert--danger {
+  color: black;
+}
