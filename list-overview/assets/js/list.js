@@ -17,12 +17,6 @@ function getRowByIdFromCurrentList(rowId) {
 }
 
 // =====================================================
-// sort Rows
-// =====================================================
-const sortRowsBtn = document.getElementById("sortListsBtn");
-const rowSortSelect = sortRowsBtn.querySelector(".row-sort-select");
-
-// =====================================================
 // Pull to refresh
 // =====================================================
 enablePullToRefresh({
@@ -643,42 +637,6 @@ function exportSelectedRows(selectedRows) {
     const fileName = `${fileNameInput.value}.json`;
     StorageAPI.exportData(data, fileName);
   };
-}
-
-
-// ------------------------
-// ROW SORT RADIO SYNC
-// ------------------------
-function syncListRowSortRadios(listId) {
-  const mode = StorageAPI.getRowSortMode(listId);
-  rowSortSelect.value = mode;
-}
-
-rowSortSelect.addEventListener("change", (event) => {
-  StorageAPI.setRowSortMode(AppRoute.currentListId, event.target.value);
-  renderCurrentView();
-});
-
-function updateListSortMode(e) {
-  const radio = e;
-  if (!radio.matches("input[type='radio']")) return;
-
-  const listId = AppRoute.currentListId;
-  if (!listId) return;
-
-  const selectedMode = radio.value;
-  StorageAPI.setRowSortMode(listId, selectedMode);
-
-  // 🔥 wichtig für Sortable teardown/reinit
-  renderList(listId);
-}
-
-
-
-
-function getRowSortMode(listId) {
-  const list = getListById(listId);
-  return list?.sortMode || "manual";
 }
 
 function updateListOptions() {

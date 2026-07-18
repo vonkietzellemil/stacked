@@ -19,22 +19,50 @@ let itemsSortable = null;
 
 
 // =====================================================
-// sort Lists
+// sort UI change, updates etc...
 // =====================================================
 const sortListsBtn = document.getElementById("sortListsBtn");
 const listSortSelect = sortListsBtn.querySelector(".list-sort-select");
+const rowSortSelect = document.querySelector(".row-sort-select");
 
-function updateSortUI() {
-  const rowSortSelect = document.querySelector(".row-sort-select");
-
-  if (!AppRoute.currentListId) {
-    listSortSelect.hidden = false;
-    rowSortSelect.hidden = true;
-  } else {
+function updateSortUIAndGetSortMode() {
+  const listId = AppRoute.currentView.id;
+  syncSortRadios(listId);
+  
+  if (listId) {
     listSortSelect.hidden = true;
     rowSortSelect.hidden = false;
+    return StorageAPI.getRowSortMode(listId);
+  } else {
+    listSortSelect.hidden = false;
+    rowSortSelect.hidden = true;
+    return StorageAPI.getListSortMode();
   }
 }
+
+function syncSortRadios(listId = null) {
+  const mode = StorageAPI.getListSortMode();
+  listSortSelect.value = mode || "manual";
+
+  if (listId) {
+    const mode = StorageAPI.getRowSortMode(listId);
+    rowSortSelect.value = mode || "manual";
+  }
+}
+
+rowSortSelect.addEventListener("change", (event) => {
+  console.log("change detected:", event.target.value)
+  StorageAPI.setRowSortMode(AppRoute.currentView.id, event.target.value);
+  renderCurrentView();
+});
+
+listSortSelect.addEventListener("change", (event) => {
+  StorageAPI.setListSortMode(event.target.value);
+  renderCurrentView();
+});
+
+
+
 
 enablePullToRefresh({
   container: "#entityContainer",
@@ -47,18 +75,6 @@ enablePullToRefresh({
   }
 });
 
-// ------------------------
-// LIST SORT RADIO SYNC
-// ------------------------
-function syncListSortRadios() {
-  const mode = StorageAPI.getListSortMode();
-  listSortSelect.value = mode;
-}
-
-listSortSelect.addEventListener("change", (event) => {
-  StorageAPI.setListSortMode(event.target.value);
-  renderCurrentView();
-});
 
 // Elements / global variables
 const entityContainer = document.getElementById("entityContainer");
@@ -832,7 +848,6 @@ function renderCollection({
   emptyMessage=true,
   createNewSortable
 }) {
-  
   if (itemsSortable) {
     itemsSortable.forEach(s => s.destroy());
     itemsSortable = null;
@@ -845,9 +860,12 @@ function renderCollection({
     config.parent.id ??
     config.parent.view;
 
+
+  const sortMode = updateSortUIAndGetSortMode(); // Have Sort Button work
+  
   const sortedItems = sortItems(
     items,
-    StorageAPI.getListSortMode(),
+    sortMode,
     StorageAPI.getViewOrderByView(currentView),
     config.customSorts || null
   );
@@ -1832,6 +1850,12 @@ function sortItems(items, mode, order=[], customSorts = {}) {
     case "alphabetic":
       return [...items].sort((a, b) =>
         a.name.localeCompare(b.name)
+      );
+
+    case "highestCount":
+      console.log("running hightets")
+      return [...items].sort((a, b) =>
+        b.count - a.count
       );
 
     case "newest":
