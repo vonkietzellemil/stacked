@@ -1290,14 +1290,16 @@ function createCategoryMenu(item, el) {
   };
 
   // Archive
-  menu.querySelector(".archive").onclick = () => {
-    const confirmed = confirm("Archive Category?");
-    if (!confirmed) return false;
+  if (menu.querySelector(".archive")) {
+    menu.querySelector(".archive").onclick = () => {
+      const confirmed = confirm("Archive Category?");
+      if (!confirmed) return false;
 
-    StorageAPI.updateItem(item.id, { parentId: item.parentId === "root" ? "archive" : "root" });
-    el.remove();
-    menu.remove()
-  };
+      StorageAPI.updateItem(item.id, { parentId: item.parentId === "root" ? "archive" : "root" });
+      el.remove();
+      menu.remove()
+    };
+  }
 
   // Delete
   menu.querySelector(".delete").onclick = () => {
