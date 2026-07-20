@@ -862,7 +862,7 @@ function renderCollection({
 
 
   const sortMode = updateSortUIAndGetSortMode(); // Have Sort Button work
-  
+
   const sortedItems = sortItems(
     items,
     sortMode,
@@ -1238,7 +1238,7 @@ function createCategoryMenu(item, el) {
 
   menu.innerHTML = `
     <div class="menu-item edit">✏️ Edit</div>
-    <div class="menu-item archive">📁 ${item.parentId === "root" ? "Archive" : "Unarchive"}</div>
+    ${!AppRoute.currentView.id ? `<div class="menu-item archive">📁 ${item.parentId === "root" ? "Archive" : "Unarchive"}</div>` : ""}
     <div class="menu-item delete">🗑 Delete</div>
   `;
 
@@ -1855,7 +1855,7 @@ function sortItems(items, mode, order=[], customSorts = {}) {
     case "highestCount":
       console.log("running hightets")
       return [...items].sort((a, b) =>
-        b.count - a.count
+        b.count || 0 - a.count || 0
       );
 
     case "newest":
