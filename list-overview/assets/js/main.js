@@ -44,26 +44,12 @@ if ('BeforeInstallPromptEvent' in window) {
     installPrompt = null;
     installAppGuide.hidden = true;
   }
-
-  window.addEventListener("beforeinstallprompt", async (e) => {
-    if (!('getInstalledRelatedApps' in navigator)) {
-      return;
-    }
-
-    // Search for a specific installed platform-specific app
-    const relatedApps = await navigator.getInstalledRelatedApps();
-
-    const psApp = relatedApps.find(
-      app => app.id === "com.example.myapp"
-    );
-
-    if (psApp) {
-      e.preventDefault();
-      // Update UI as appropriate
-    }
-  });
 } else if (isIOS() && !isInStandaloneMode()) {
   // Show "Tap Share → Add to Home Screen"
+
+
+  // Disabling it for now, so the app is usable in thye browser
+  return;
 
   setTimeout(() => installAppGuideIos.hidden = false, 1000)
 }
