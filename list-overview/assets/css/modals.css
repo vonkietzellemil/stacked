@@ -300,12 +300,13 @@
   display: flex;
   flex-direction: column;
   gap: 64px;
-  flex: 1;
+  flex: 1 0 0;
   min-height: 0;
   width: 100%;
   box-sizing: border-box;
 
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 
@@ -549,6 +550,146 @@
 }
 
 /* ========================================
-   STATS PAGE
+   Contact Page
 ======================================== */
 
+.settings-page-content.contact-support .settings-section {
+  background-color: var(--color-surface);
+  gap: 0;
+}
+
+.settings-page-content.contact-support .settings-section #contactFormSelect:valid {
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 20px;
+}
+
+#contactFormSelect {
+  height: 60px;
+  font-size: 20px;
+}
+
+#contactFormSelect:focus {
+  outline: none;
+}
+
+.settings-item.form-container {
+  padding: 0;
+}
+
+/* Container für das gesamte Formular */
+.settings-item.form-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 8px;
+}
+
+
+.settings-item.form-container .input-box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+.settings-item.form-container .input-box .title {
+  font-size: 18px;
+  margin-bottom: 14px;
+  margin-left: 4px;
+}
+.settings-item.form-container .input-box .description {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  margin-top: 8px;
+  margin-left: 4px;
+}
+
+
+/* Einheitlicher Stil für alle Eingabefelder und Textbereiche */
+.settings-item.form-container input[type="text"],
+.settings-item.form-container input[type="email"],
+.settings-item.form-container input[type="tel"],
+.settings-item.form-container textarea {
+  height: 40px;
+  font-size: 16px;
+  padding: 0 16px;
+  border: 1px solid var(--color-border);
+  border: none;
+  border-radius: 4px;
+  background-color: var(--color-bg);
+  color: inherit;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+/* Spezifische Anpassung für das mehrzeilige Textfeld */
+.settings-item.form-container textarea {
+  height: auto;
+  font-size: 16px;
+  min-height: 120px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  resize: vertical; /* Erlaubt dem User nur vertikales Skalieren */
+}
+
+/* Fokus-Zustand für alle Elemente (analog zu deinem Select) */
+.settings-item.form-container input:focus,
+.settings-item.form-container textarea:focus {
+  outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--color-text);
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 100px 100px var(--color-bg);
+}
+
+/* Styling für die Platzhalter-Texte */
+.settings-item.form-container ::placeholder {
+  color: var(--color-text-muted, #888);
+  opacity: 0.7;
+}
+
+/* Button-Styling am Ende des Formulars */
+.settings-item.form-container button[type="submit"] {
+  height: 60px;
+  font-size: 20px;
+  width: fit-content;
+  font-weight: bold;
+  align-self: self-end;
+  margin: 0px 12px 12px 0;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.settings-item.form-container button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+
+/* ===== 1. MODAL ANPASSUNG ===== */
+.settings-modal {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  height: 90%;
+  border-radius: 20px;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Verhindert, dass Seiten aus dem Modal herausragen */
+
+  transition: bottom 0.4s ease;
+}

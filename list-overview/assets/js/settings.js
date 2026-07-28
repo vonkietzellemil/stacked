@@ -1,5 +1,5 @@
 const settingsData = {
-  CURRENT_VERSION: "1.6.3",
+  CURRENT_VERSION: "1.7.0",
   CURRENT_DATA_VERSION: 4,
 };
 
@@ -598,10 +598,30 @@ function checkForUpdates() {
   runDataMigrations();
 
   if (settings.version !== settingsData.CURRENT_VERSION) {
-    console.log("runningnngnn")
     settings.version = settingsData.CURRENT_VERSION;
+
+    // Temporarly inform users about support contact while updateNews is disabled
+    const modalTitle = `New Feature`;
+    const modalContent = `
+      <p style="margin-bottom: 20px;">
+        You can now contact the support through the settings if you have any problems or suggestions.
+      </p>
+      <u onclick="
+        openSettings();
+        showPage('settingsPageContactSupport');
+        deleteModal();
+      ">Open settings.</u>
+    `;
+    
+    createModal(modalTitle, modalContent, null);
+    document.getElementById("closeModalBtn").style.display = "none";
+    // The info ends here, just cut it out later
+
+
     if (!settings.receiveUpdateNews) return;
 
+    // Disabling update notifications
+    // =============================
     // const modalTitle = `🚀 New Version: ${settings.version} 🔥`;
     // const modalContent = `<u onclick="
     //   AppRoute.toUpdateNews('${settings.version}');
@@ -831,91 +851,6 @@ const migrations = {
 };
 
 
-
-
-
-// function convertOldSettings() {
-//   const settings = StorageAPI.getSettings();
-
-//   // Theme
-//   const oldTheme1 = localStorage.getItem("theme");
-//   if (oldTheme1) {
-//     localStorage.removeItem("theme");
-//   };
-//   if (!Array.isArray(settings.theme)) {
-//     settings.theme = ["system", "default"];
-//     applyTheme(settings.theme);
-//   };
-
-//   // Update News
-//   if (settings.receiveUpdateNews === undefined) {
-//     settings.receiveUpdateNews = true;
-//   };
-
-//   StorageAPI.updateSettings(settings);
-
-//   // Rows
-//   // Some rows before 1.3.1 have row.options.favored instead of row.status.favored and options needs to be deleted
-//   read(KEYS.ROWS, []).map(row => normalizeRow(row));
-//   function normalizeRow(row) {
-//     if (
-//       row.options !== undefined ||
-//       !row.status ||
-//       !row.name ||
-//       row.type === undefined ||
-//       row.parentId === undefined
-//     ) {
-//       const convertedRow = {
-//         ...row,
-//         parentId: row.parentId || row.listId,
-//         name: row.title || row.name,
-//         status: {
-//           ...(row.status || {}),
-//           favored: row.options?.favored || false,
-//         },
-//         type: row.type || "row"
-//       };
-//       delete convertedRow.options;
-//       delete convertedRow.title;
-//       StorageAPI.updateRow(row.id, convertedRow, true);
-//     }
-//   }
-
-//   // Lists before 1.3.1 may have list.options.favored instead of list.status.favored
-//   read(KEYS.LISTS, []).map(list => normalizelist(list));
-//   function normalizelist(list) {
-//     if (list.status === undefined ||
-//       list.status.favored === undefined ||
-//       list.type === undefined ||
-//       list.parentId === undefined
-//     ) {
-//       const convertedList = {
-//         ...list,
-//         status: {
-//           favored: list.options?.favored || false,
-//           ...(list.status || {})
-//         },
-//         type: list.type || "list",
-//         parentId: "lists"
-//       };
-//       StorageAPI.updateList(list.id, convertedList, true);
-//     }
-
-//     if (list.options.favored !== undefined) {
-//       delete list.options.favored;
-//       StorageAPI.updateList(list.id, list);
-//     }
-
-//     if (list.status.archived === true) {
-//       delete list.status.archived;
-//       list.location = "archived";
-//       StorageAPI.updateList(list.id, list);
-//     }
-//   }
-
-
-// }
-
 function renderUpdateNews(version) {
   let tries = 0;
 
@@ -936,6 +871,115 @@ function renderUpdateNews(version) {
 
   tryScroll();
 }
+
+
+// Testing of forms
+// openSettings();
+// showPage("settingsPageContactSupport");
+
+// =====================================================
+// Form Contact Support handling
+// =====================================================
+
+const forms = document.querySelectorAll('form');
+
+forms.forEach(form => form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    const formData = new FormData(form);
+
+    const metadata = {
+      appVersion: settingsData.CURRENT_VERSION,
+      dataVersion: settingsData.CURRENT_DATA_VERSION,
+      language: navigator.language,
+      url: window.location.href,
+
+      userAgent: navigator.userAgent,
+      platform: navigator.platform,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      screen: `${screen.width}x${screen.height}`,
+      viewport: `${window.innerWidth}x${window.innerHeight}`,
+      standalone:
+        window.matchMedia("(display-mode: standalone)").matches,
+      timestamp: new Date().toISOString()
+    };
+
+    formData.append("metadata", JSON.stringify(metadata, null, 2));
+
+    // Delete empty keys
+    for (let [key, value] of [...formData.entries()]) {
+      if (typeof value === 'string' && value.trim() === "") {
+        formData.delete(key);
+      }
+    }
+
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Success! Your message has been sent.");
+            form.reset();
+        } else {
+            alert("Error: " + data.message);
+        }
+
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+    } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
+}));
+
+async function getMetadata() {
+  const metadata = {};
+
+  if (navigator.userAgentData) {
+    const ua = await navigator.userAgentData.getHighEntropyValues([
+      "platform",
+      "platformVersion",
+      "architecture",
+      "model",
+      "uaFullVersion"
+    ]);
+
+    Object.assign(metadata, ua);
+  }
+
+  return metadata;
+}
+
+
+const contactFormSelect = document.getElementById("contactFormSelect");
+
+contactFormSelect.addEventListener("change", e => {
+  showContactForm(contactFormSelect.value);
+});
+
+function showContactForm(formName) {
+  const allForms = document.querySelectorAll(".contact-form");
+
+  allForms.forEach(form => {
+    form.hidden = true;
+  });
+
+  const form = document.querySelector(`.contact-form[name="${formName}"]`);
+  if (form) form.hidden = false;
+}
+
+
+
 
 // ---------- Onboarding
 function startGuide(stepsParam = null) {

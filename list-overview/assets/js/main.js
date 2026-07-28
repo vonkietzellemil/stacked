@@ -72,3 +72,10 @@ function updateLayout() {
 // window.visualViewport?.addEventListener('scroll', updateLayout);
 
 updateLayout();
+
+
+
+
+
+
+

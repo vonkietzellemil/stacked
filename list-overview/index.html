@@ -345,6 +345,11 @@
                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
                 </button>
 
+                <button class="settings-item settings-nav-btn" data-page="settingsPageContactSupport">
+                  Contact support
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+                </button>
+
                 <!-- Todo: Install App guide, open from here and onboarding. also style stats page -->
               </div>
 
@@ -624,6 +629,194 @@
 
             </div>
           </div>
+
+          <!-- ================= CONTACT SUPPORT PAGE ================= -->
+          <div id="settingsPageContactSupport" class="settings-page hidden">
+            <div class="settings-header-container">
+              <button class="settings-back-btn" data-page="settingsPageRoot">← Back</button>
+              <h1>Contact support</h1>
+              <button class="settings-done-btn">Done</button>
+            </div>
+
+            <div class="settings-page-content contact-support">
+
+              <div>
+                
+                <div class="settings-section">
+
+                  <select id="contactFormSelect" class="settings-item" required>
+                    <option value="" disabled selected>Choose a contact form</option>
+                    <option value="requestHelp">Request Help</option>
+                    <option value="reportProblem">Report a Problem</option>
+                    <option value="suggestFeature">Suggest Feature</option>
+                  </select>
+
+                  <div class="settings-item form-container">
+                    <!-- Request Help -->
+                    <form
+                      action="https://api.web3forms.com/submit"
+                      method="POST"
+                      name="requestHelp"
+                      class="contact-form"
+                      hidden
+                    >
+                      <input type="hidden" name="access_key" value="a60428b2-e360-46a5-812b-075ef69dea61">
+
+                      <div class="input-box">
+                        <p class="title">Name (optional)</p>
+                        <input
+                          type="text"
+                          name="Name"
+                          placeholder="Name"
+                        >
+                      </div>
+                      
+                      <div class="input-box">
+                        <p class="title">Email</p>
+                        <input
+                          type="text"
+                          name="Email"
+                          placeholder="email@example.com"
+                          required
+                        >
+                        <p class="description">I will reply to this email.</p>
+                      </div>
+
+                      <div class="input-box">
+                        <p class="title">What do you need help with?</p>
+                        <textarea
+                          name="Message"
+                          placeholder="Describe your situation..."
+                          required
+                        ></textarea>
+                      </div>
+                      
+                      <button type="submit">Submit Form</button>
+                    </form>
+
+
+                    <!-- Report a Problem -->
+                    <form
+                      action="https://api.web3forms.com/submit"
+                      method="POST"
+                      name="reportProblem"
+                      class="contact-form"
+                      hidden
+                    >
+                      <input type="hidden" name="access_key" value="41064877-c6a3-421a-a3d7-4778c5cd931b">
+
+                      <div class="input-box">
+                        <p class="title">Name (optional)</p>
+                        <input
+                          type="text"
+                          name="Name"
+                          placeholder="Name"
+                        >
+                      </div>
+
+                      <div class="input-box">
+                        <p class="title">Email (optional)</p>
+                        <input
+                          type="text"
+                          name="Email"
+                          placeholder="email@example.com"
+                        >
+                        <p class="description">The email is needed if you want to receive a reply.</p>
+                      </div>
+
+                      <div class="input-box">
+                        <p class="title">Subject</p>
+                        <input
+                          type="text"
+                          name="Subject"
+                          placeholder="e.g. Lists are missing!"
+                          required
+                        >
+                      </div>
+
+                      <div class="input-box">
+                        <p class="title">Describe the problem</p>
+                        <textarea
+                          name="Problem description"
+                          placeholder="What did you do?"
+                          required
+                        ></textarea>
+
+                        <p class="description">What did you expect to happen?</p>
+                        <p class="description">What actually happend?</p>
+                        <p class="description">Add further details...</p>
+                        
+                      </div>
+                      
+                      <button type="submit">Submit Form</button>
+                    </form>
+
+
+                    <!-- Suggest feature -->
+                    <form
+                      action="https://api.web3forms.com/submit"
+                      method="POST"
+                      name="suggestFeature"
+                      class="contact-form"
+                      hidden
+                    >
+                      <input type="hidden" name="access_key" value="aa47a1f2-0d62-4f1d-8c2b-57a54ecc2b5d">
+
+                      <div class="input-box">
+                        <p class="title">Name (optional)</p>
+                        <input
+                          type="text"
+                          name="Name"
+                          placeholder="Name"
+                        >
+                      </div>
+                      
+                      <div class="input-box">
+                        <p class="title">Email (optional)</p>
+                        <input
+                          type="text"
+                          name="Email"
+                          placeholder="email@example.com"
+                        >
+                        <p class="description">The email is needed if you want to receive a reply.</p>
+                      </div>
+
+                      <div class="input-box">
+                        <p class="title">Explain the feature</p>
+                        <textarea
+                          name="Feature description"
+                          placeholder="How does it work?"
+                          required
+                        ></textarea>
+                      </div>
+
+                      <!-- <div class="input-box">
+                        <p class="title">How important is this feature?</p>
+                        <label>
+                          <input type="radio" name="importance" value="Nice to have" checked>
+                          Nice to have
+                        </label>
+                        <label>
+                          <input type="radio" name="importance" value="Useful">
+                          Useful
+                        </label>
+                        <label>
+                          <input type="radio" name="importance" value="Critical">
+                          Critical
+                        </label>
+                      </div> -->
+                      
+                      <button type="submit">Submit Form</button>
+                    </form>
+
+                  </div>
+
+                </div>
+              </div>              
+            </div>
+          </div>
+
+
         </div>
       </div>
 
@@ -1095,6 +1288,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+    <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
 
     <script defer src="assets/js/modal.js"></script>
     <script defer src="assets/js/swipe-to-delete.js"></script>
@@ -1107,8 +1301,5 @@
     <script defer src="assets/js/pwa.js"></script>
     <script defer src="assets/js/main.js"></script>
 
-
-    <!-- Android PWA -->
-    <script defer src="js/pwa.js"></script>
   </body>
 </html>
