@@ -60,7 +60,7 @@ window.StorageAPI = {
     const lists = read(KEYS.LISTS, []);
 
     const list = {
-      id: props.id || crypto.randomUUID(),
+      id: crypto.randomUUID(),
       name: props.name.trim(),
       type: "list",
       parentId: props.parentId || AppRoute.currentView.view,
@@ -162,7 +162,7 @@ window.StorageAPI = {
   addRow(props) {
     const rows = read(KEYS.ROWS, []);
     const row = {
-      id: props.id || crypto.randomUUID(),
+      id: crypto.randomUUID(),
       parentId: props.parentId || AppRoute.currentView.id || AppRoute.currentView.view,
       createdAt: Date.now(),
       type: "row",
@@ -323,7 +323,7 @@ window.StorageAPI = {
   createCategory(props) {
     const categories = read(KEYS.CATEGORIES, []);
     const category = {
-      id: props.id || crypto.randomUUID(),
+      id: crypto.randomUUID(),
       name: props.name.trim(),
       type: "category",
 
