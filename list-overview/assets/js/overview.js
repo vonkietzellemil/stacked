@@ -563,7 +563,7 @@ function moveSelectedItemsToDifferentList(ids) {
       
     ids.forEach(id => {
       if (createCopy) {
-        StorageAPI.duplicateRow(id, null, targetListId);
+        StorageAPI.duplicateItem(id, { parentId: targetListId });
       } else {
         StorageAPI.updateItem(id, { parentId: targetListId });
       }

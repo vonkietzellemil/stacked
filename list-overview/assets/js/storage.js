@@ -136,8 +136,9 @@ window.StorageAPI = {
 
     const entityType = ENTITY_TYPES[item.type];
 
-    const newItem = { ...item, ...props, name: `${item.name}` };
-    entityType.createItem(newItem);
+    const newItem = entityType.createItem(
+      { ...item, ...props }
+    );
 
     StorageAPI.getItemsByParentId(id).forEach(child => {
       StorageAPI.duplicateItem(child.id, { parentId: newItem.id });
