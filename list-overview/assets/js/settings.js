@@ -890,11 +890,21 @@ forms.forEach(form => form.addEventListener('submit', async (e) => {
     
     const formData = new FormData(form);
 
+    const formName = form.name; 
+    const subject = formData.get("subject");
+
+    if (formName && subject) {
+      formData.set("subject", formName + ": " + subject);
+    }
+
     const metadata = {
+      formType: formName,
       appVersion: settingsData.CURRENT_VERSION,
       dataVersion: settingsData.CURRENT_DATA_VERSION,
       language: navigator.language,
       url: window.location.href,
+      path: window.location.pathname,
+      online: navigator.onLine,
 
       userAgent: navigator.userAgent,
       platform: navigator.platform,

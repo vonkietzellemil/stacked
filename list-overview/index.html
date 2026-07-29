@@ -646,9 +646,9 @@
 
                   <select id="contactFormSelect" class="settings-item" required>
                     <option value="" disabled selected>Choose a contact form</option>
-                    <option value="requestHelp">Request Help</option>
-                    <option value="reportProblem">Report a Problem</option>
-                    <option value="suggestFeature">Suggest Feature</option>
+                    <option value="Request Help">❓ Request Help</option>
+                    <option value="Report Problem">🐛 Report a Problem</option>
+                    <option value="Suggest Improvement">💡 Suggest Improvement</option>
                   </select>
 
                   <div class="settings-item form-container">
@@ -656,42 +656,43 @@
                     <form
                       action="https://api.web3forms.com/submit"
                       method="POST"
-                      name="requestHelp"
+                      name="Request Help"
                       class="contact-form"
                       hidden
                     >
                       <input type="hidden" name="access_key" value="a60428b2-e360-46a5-812b-075ef69dea61">
-
-                      <div class="input-box">
-                        <p class="title">Name (optional)</p>
-                        <input
-                          type="text"
-                          name="Name"
-                          placeholder="Name"
-                        >
-                      </div>
                       
                       <div class="input-box">
                         <p class="title">Email</p>
                         <input
-                          type="text"
-                          name="Email"
-                          placeholder="email@example.com"
+                          type="email"
+                          name="email"
+                          placeholder="name@example.com"
                           required
                         >
                         <p class="description">I will reply to this email.</p>
                       </div>
 
                       <div class="input-box">
+                        <p class="title">Subject</p>
+                        <input
+                          type="text"
+                          name="subject"
+                          placeholder="e.g. Can't find my deleted lists!"
+                          required
+                        >
+                      </div>
+
+                      <div class="input-box">
                         <p class="title">What do you need help with?</p>
                         <textarea
-                          name="Message"
+                          name="message"
                           placeholder="Describe your situation..."
                           required
                         ></textarea>
                       </div>
                       
-                      <button type="submit">Submit Form</button>
+                      <button type="submit">Submit</button>
                     </form>
 
 
@@ -699,27 +700,18 @@
                     <form
                       action="https://api.web3forms.com/submit"
                       method="POST"
-                      name="reportProblem"
+                      name="Report Problem"
                       class="contact-form"
                       hidden
                     >
                       <input type="hidden" name="access_key" value="41064877-c6a3-421a-a3d7-4778c5cd931b">
 
                       <div class="input-box">
-                        <p class="title">Name (optional)</p>
-                        <input
-                          type="text"
-                          name="Name"
-                          placeholder="Name"
-                        >
-                      </div>
-
-                      <div class="input-box">
                         <p class="title">Email (optional)</p>
                         <input
-                          type="text"
-                          name="Email"
-                          placeholder="email@example.com"
+                          type="email"
+                          name="email"
+                          placeholder="name@example.com"
                         >
                         <p class="description">The email is needed if you want to receive a reply.</p>
                       </div>
@@ -728,66 +720,71 @@
                         <p class="title">Subject</p>
                         <input
                           type="text"
-                          name="Subject"
+                          name="subject"
                           placeholder="e.g. Lists are missing!"
                           required
                         >
                       </div>
 
                       <div class="input-box">
-                        <p class="title">Describe the problem</p>
+                        <p class="title">What went wrong?</p>
                         <textarea
-                          name="Problem description"
-                          placeholder="What did you do?"
+                          name="message"
+                          placeholder="Describe the problem..."
                           required
                         ></textarea>
 
-                        <p class="description">What did you expect to happen?</p>
-                        <p class="description">What actually happend?</p>
-                        <p class="description">Add further details...</p>
+                        <p class="description">What actions did you perform?</p>
+                        <p class="description" style="margin-top: 4px;">What did you expect to happen?</p>
+                        <p class="description" style="margin-top: 4px;">What actually happend?</p>
+                        <p class="description" style="margin-top: 4px;">Please add as much details as you can to help us pinpoint the problem faster...</p>
                         
                       </div>
                       
-                      <button type="submit">Submit Form</button>
+                      <button type="submit">Submit</button>
                     </form>
 
 
-                    <!-- Suggest feature -->
+                    <!-- Suggest Improvement -->
                     <form
                       action="https://api.web3forms.com/submit"
                       method="POST"
-                      name="suggestFeature"
+                      name="Suggest Improvement"
                       class="contact-form"
                       hidden
                     >
                       <input type="hidden" name="access_key" value="aa47a1f2-0d62-4f1d-8c2b-57a54ecc2b5d">
-
-                      <div class="input-box">
-                        <p class="title">Name (optional)</p>
-                        <input
-                          type="text"
-                          name="Name"
-                          placeholder="Name"
-                        >
-                      </div>
                       
                       <div class="input-box">
                         <p class="title">Email (optional)</p>
                         <input
-                          type="text"
-                          name="Email"
-                          placeholder="email@example.com"
+                          type="email"
+                          name="email"
+                          placeholder="name@example.com"
                         >
                         <p class="description">The email is needed if you want to receive a reply.</p>
                       </div>
 
                       <div class="input-box">
-                        <p class="title">Explain the feature</p>
+                        <p class="title">Subject</p>
+                        <input
+                          type="text"
+                          name="subject"
+                          placeholder="..."
+                          required
+                        >
+                      </div>
+
+                      <div class="input-box">
+                        <p class="title">What could we improve?</p>
                         <textarea
                           name="Feature description"
-                          placeholder="How does it work?"
+                          placeholder="Describe the improvement, idea, or change you'd like to see...?"
                           required
                         ></textarea>
+                        <p class="description">
+                          Suggest an improvement, new feature, UI change, workflow enhancement, or anything else that would make the app better.
+                        </p>
                       </div>
 
                       <!-- <div class="input-box">
@@ -806,7 +803,7 @@
                         </label>
                       </div> -->
                       
-                      <button type="submit">Submit Form</button>
+                      <button type="submit">Submit</button>
                     </form>
 
                   </div>

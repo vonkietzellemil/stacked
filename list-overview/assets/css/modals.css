@@ -582,6 +582,7 @@
   flex-direction: column;
   width: 100%;
   padding: 8px;
+  cursor: default;
 }
 
 
@@ -656,7 +657,7 @@ input:-webkit-autofill:active{
 /* Button-Styling am Ende des Formulars */
 .settings-item.form-container button[type="submit"] {
   height: 60px;
-  font-size: 20px;
+  font-size: 16px;
   width: fit-content;
   font-weight: bold;
   align-self: self-end;
