@@ -1,5 +1,5 @@
 const settingsData = {
-  CURRENT_VERSION: "1.7.0",
+  CURRENT_VERSION: "1.7.1",
   CURRENT_DATA_VERSION: 4,
 };
 
@@ -598,25 +598,27 @@ function checkForUpdates() {
   runDataMigrations();
 
   if (settings.version !== settingsData.CURRENT_VERSION) {
-    settings.version = settingsData.CURRENT_VERSION;
 
-    // Temporarly inform users about support contact while updateNews is disabled
-    const modalTitle = `New Feature`;
-    const modalContent = `
-      <p style="margin-bottom: 20px;">
-        You can now contact the support through the settings if you have any problems or suggestions.
-      </p>
-      <u onclick="
-        openSettings();
-        showPage('settingsPageContactSupport');
-        deleteModal();
-      ">Open settings.</u>
-    `;
-    
-    createModal(modalTitle, modalContent, null);
-    document.getElementById("closeModalBtn").style.display = "none";
+    // Temporarly inform users about support contact while updateNews is disabled was implemented in 1.7
+    if (settings.version.startsWith("1.6")) {
+      const modalTitle = `New Feature`;
+      const modalContent = `
+        <p style="margin-bottom: 20px;">
+          You can now contact the support through the settings if you have any problems or suggestions.
+        </p>
+        <u onclick="
+          openSettings();
+          showPage('settingsPageContactSupport');
+          deleteModal();
+        ">Open settings.</u>
+      `;
+      
+      createModal(modalTitle, modalContent, null);
+      document.getElementById("closeModalBtn").style.display = "none";
+    }
     // The info ends here, just cut it out later
 
+    settings.version = settingsData.CURRENT_VERSION;
 
     if (!settings.receiveUpdateNews) return;
 

@@ -291,6 +291,8 @@
   display: flex;
   justify-content: center;
   cursor: grab;
+
+  touch-action: pan-x;
 }
 .settings-header-container h1.settings-root-page-title {
   justify-content: start;
@@ -376,6 +378,8 @@
   padding-bottom: 15px;
 
   cursor: grab;
+
+  touch-action: pan-x;
 }
 
 #settingsDragHandle:active,
